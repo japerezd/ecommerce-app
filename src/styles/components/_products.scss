@@ -1,0 +1,103 @@
+.products{
+    display: grid;
+    justify-content: center;
+    margin-top: 0.5rem;
+
+    // TABLET
+    @media screen and (min-width: 768px){
+        width: 600px;
+    }
+
+    // DESKTOP
+    @media screen and (min-width: 1024px){
+        width: 700px;
+        margin-top: 0;
+    }
+    @media screen and (min-width: 1215px){
+        width: 1050px;
+    }
+}
+
+.container-products{
+    display: grid;
+    gap: 10px;
+    justify-content: center;
+    width: 300px;
+
+    // TABLET
+    @media screen and (min-width: 768px){
+        grid-template-columns: repeat(2, 300px);
+        width: 610px;
+    }
+
+    @media screen  and (min-width: 1024px){
+        grid-template-columns: repeat(2, 300px);
+        // width: 700px;
+    }
+    @media screen  and (min-width: 1215px){
+        grid-template-columns: repeat(3, 300px);
+        width: 920px;
+    }
+}
+
+
+// SELECT FILTER PRICES
+
+.container-products__filter-price{
+    display: flex;
+    justify-content: flex-end;
+    // text-align: right;
+    @media screen and (min-width: 768px){
+        width: 100%;
+    }
+}
+
+
+// PRODUCTS ITEM
+
+.container-products__item{
+    border: 2px solid $gray;
+    border-radius: 3px;
+    min-width: 0;
+    min-height: 350px;
+
+    &:hover{
+        box-shadow: 0 0 1rem 0.4rem $gray;
+        transform: scaleY(1.01)
+    }
+}
+
+.container-image{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-products__details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+// BUTTON
+.container-image .button__wrapper{
+    // align-self: center;
+    background-color: $black;
+    border: 1px solid $black;
+    font-size: 0.8rem;
+
+    &:hover{
+        color: $black;
+    }
+}
+
+// PRODUCT DETAILS
+.container-products__details > p:nth-child(1){
+    color: darken($gray, 60%);
+    font-size: 1rem;
+    margin-top: 0;
+}
+.container-products__details > p:nth-child(2){
+    font-size: 1.2rem;
+}

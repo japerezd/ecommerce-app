@@ -1,0 +1,18 @@
+.navbar{
+    background: $primary;
+    display: flex;
+    font-size: 1.2rem;
+    justify-content: space-around;
+    padding: 0.8rem;
+    margin-bottom: 2rem;
+}
+
+
+a{
+    text-decoration: none;
+    color: $white;
+
+    &:hover{
+        color: $hover-color;
+    }
+}

@@ -1,0 +1,57 @@
+.section-filter{
+    background: $gray;
+    padding: 0.01rem;
+    margin-bottom: 2rem;
+    // justify-content: center;
+    // align-self: auto;
+}
+
+
+.form-group label.brand{
+    text-transform: capitalize;
+}
+
+.form-group label,
+.form-group input{
+    margin-left: 0.5rem;
+}
+
+.section-filter .form-group{
+    display: flex;
+    // max-width: 220px;
+    background: $white;
+    margin: 0 0.2rem 0.2rem .2rem;
+    padding: 0.5rem;
+}
+
+.title-filter{
+    font-size: 1.4rem;
+    font-weight: bold;
+    display: block;
+    margin: 1.2rem 0.5rem;
+}
+
+.section-filter__container{
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr);
+}
+
+// TABLET
+@media screen and (min-width: 768px){
+
+    .section-filter__container{
+        grid-template-columns: repeat(2, minmax(300px, 1fr));
+    }
+}
+
+// DESKTOP
+
+@media screen and (min-width: 1024px){
+
+    .section-filter__container{
+        grid-template-columns: 200px;
+        align-self: flex-start;
+        justify-self: self-start;
+    }   
+
+}
