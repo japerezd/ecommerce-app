@@ -61,7 +61,7 @@ export const products = [
         display: '6.67"',
         name: 'Apple iPhone 12 mini',
         price: 18900,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat. Vivamus dictum facilisis fermentum. In non aliquam quam. Aliquam erat mi, consectetur in imperdiet quis, ornare a felis.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat. ",
         images: [
             {img1: appleIphone12MiniAmbasVistas},
             {im2: appleIphone12MiniVistaFrontalDinamica},
@@ -79,7 +79,7 @@ export const products = [
         display: '6.67"',
         name: 'Apple iPhone SE 2020',
         price: 10199,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat. Vivamus dictum facilisis fermentum. In non aliquam quam. Aliquam erat mi, consectetur in imperdiet quis, ornare a felis.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat.",
         images: [
             {img1: appleIphoneSeAmbasVistas},
             {im2: appleIphoneSeVistaFrontal},
@@ -97,7 +97,7 @@ export const products = [
         display: '6.67"',
         name: 'Huawei P40 Pro',
         price: 23499,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat. Vivamus dictum facilisis fermentum. In non aliquam quam. Aliquam erat mi, consectetur in imperdiet quis, ornare a felis.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat.",
         images: [
             {img1: huaweiP40Pro1},
             {im2: huaweiP40Pro2},
@@ -115,7 +115,7 @@ export const products = [
         display: '6.67"',
         name: 'Huawei Y9 Prime',
         price: 5299,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat. Vivamus dictum facilisis fermentum. In non aliquam quam. Aliquam erat mi, consectetur in imperdiet quis, ornare a felis.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat.",
         images: [
             {img1: huaweiY9PrimeAmbasVistas},
             {im2: huaweiY9PrimeVistaFrontal},
@@ -133,7 +133,7 @@ export const products = [
         display: '6.67"',
         name: 'Motorola G9 Plus',
         price: 6650,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat. Vivamus dictum facilisis fermentum. In non aliquam quam. Aliquam erat mi, consectetur in imperdiet quis, ornare a felis.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat.",
         images: [
             {img1: motorolaG9Plus1},
             {im2: motorolaG9Plus2},
@@ -151,7 +151,7 @@ export const products = [
         display: '6.67"',
         name: 'Samsung Galaxy A10s',
         price: 3599,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat. Vivamus dictum facilisis fermentum. In non aliquam quam. Aliquam erat mi, consectetur in imperdiet quis, ornare a felis.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat.",
         images: [
             {img1: samsungGalaxyA10SAmbasVistas},
             {im2: samsungGalaxyA10SVistaFrontal},
@@ -169,7 +169,7 @@ export const products = [
         display: '6.67"',
         name: 'Samsung Galaxy S20 Fan Edition',
         price: 13499,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat. Vivamus dictum facilisis fermentum. In non aliquam quam. Aliquam erat mi, consectetur in imperdiet quis, ornare a felis.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat.",
         images: [
             {img1: samsungGalaxyS20FEAmbasVistas},
             {im2: samsungGalaxyS20FEVistaDerecha},
@@ -187,7 +187,7 @@ export const products = [
         display: '6.67"',
         name: 'Xiaomi Pocophone X3 NFC',
         price: 5479,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat. Vivamus dictum facilisis fermentum. In non aliquam quam. Aliquam erat mi, consectetur in imperdiet quis, ornare a felis.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat.",
         images: [
             {img1: xiaomiPocoAmbasVistas},
             {im2: xiaomiPocoVistaFrontal},
@@ -205,7 +205,7 @@ export const products = [
         display: '6.67"',
         name: 'Xiaomi Redmi 9C',
         price: 3499,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat. Vivamus dictum facilisis fermentum. In non aliquam quam. Aliquam erat mi, consectetur in imperdiet quis, ornare a felis.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat.",
         images: [
             {img1: xiaomiRedmi9CAmbas},
             {im2: xiaomiRedmi9CFrontal},
@@ -223,7 +223,7 @@ export const products = [
         display: '6.67"',
         name: 'Xiaomi Redmi Note 9 Pro',
         price: 6199,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat. Vivamus dictum facilisis fermentum. In non aliquam quam. Aliquam erat mi, consectetur in imperdiet quis, ornare a felis.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat.",
         images: [
             {img1: xiaomiRedmi9ProAmbas},
             {im2: xiaomiRedmi9ProAmbasDinamica},
@@ -241,7 +241,7 @@ export const products = [
         display: '6.67"',
         name: 'Xiaomi Redmi Note 9S',
         price: 5699,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat. Vivamus dictum facilisis fermentum. In non aliquam quam. Aliquam erat mi, consectetur in imperdiet quis, ornare a felis.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat.",
         images: [
             {img1: xiaomiRedmiRn9sAmbas},
             {im2: xiaomiRedmiRn9sArriba},
@@ -259,7 +259,7 @@ export const products = [
         display: '6.67"',
         name: 'Xiaomi Redmi Note 9S',
         price: 4399,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat. Vivamus dictum facilisis fermentum. In non aliquam quam. Aliquam erat mi, consectetur in imperdiet quis, ornare a felis.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis. Mauris nec eros arcu. Duis a euismod erat.",
         images: [
             {img1: xiaomiRedmi8Ambas},
             {im2: xiaomiRedmi8Simport},
