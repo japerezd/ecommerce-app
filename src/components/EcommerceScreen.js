@@ -16,11 +16,10 @@ export const EcommerceScreen = () => {
   
 
     const [selectedBrands, setSetSelectedBrands] = React.useState(initialState);
-    // const [priceRange, setPriceRange] = React.useState();
-    //TODO: get work for range price either with no selected brands or selected
+    const inputsChecked = document.querySelectorAll('.brandCheckbox:checked').length;
+    
     const handlePriceRange = (e)  => {
       const prices = getPriceRange(e.target.id, selectedBrands.filteredProducts);
-      // console.log(prices)
       if(e.target.checked){
         setSetSelectedBrands((prevState) => ({
           ...prevState,
@@ -32,14 +31,24 @@ export const EcommerceScreen = () => {
     const handleBrandChange = (e) => {
       const filtered = getFilteredBrands(products, e.target.id);
 
+      
         if(e.target.checked){
         // const filted = [...products.filteredProducts, filtered]
 
-          setSetSelectedBrands((prevState) => ({
-            // return [...prevState, e.target.id]
-            ...prevState,
-            filteredProducts: [...prevState.filteredProducts,...filtered]
-          }))
+          if(selectedBrands.filteredProducts.length === products.length){
+            setSetSelectedBrands((prevState) => ({
+              // return [...prevState, e.target.id]
+              ...prevState,
+              filteredProducts: [...filtered]
+            }))
+          }else{
+
+            setSetSelectedBrands((prevState) => ({
+              // return [...prevState, e.target.id]
+              ...prevState,
+              filteredProducts: [...prevState.filteredProducts,...filtered]
+            }))
+          }
         }else{
           const newState = selectedBrands.filteredProducts.filter((brand) => brand.brand !== e.target.id
           )
@@ -51,6 +60,15 @@ export const EcommerceScreen = () => {
         
     };
 
+    React.useEffect(() => {
+      if(inputsChecked === 0)
+        setSetSelectedBrands(selectedBrands => ({
+          ...selectedBrands,
+          filteredProducts: products
+        }))
+
+    },[inputsChecked])
+   
     return (
         <div className="container">
 

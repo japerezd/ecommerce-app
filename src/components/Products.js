@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { getFilteredBrands } from "./filters/getBrands";
 import { getPriceRange } from "./filters/getPrices";
 import { products } from '../data/products';
+import { Link } from 'react-router-dom';
 
 export const Products = ({selected ,priceRange}) => {
 
@@ -26,27 +27,20 @@ export const Products = ({selected ,priceRange}) => {
            { 
 
             filteredProducts.length === 0 
-                ?
-                products.map(prod => (
-                <div className="container-products__item" key={prod.id}>
-                    <div className="container-image">
-                        <img  src={prod.images[0].img1} alt={prod.name}/>
-                        <div className="button__wrapper">BUY NOW</div>
-                    </div>
+            ?
+             <div className="empty-search">
+                <h3>Unfortunately no devices matched your search parameters :( </h3>
+             </div>
 
-                    <div className="container-products__details">
-                        <p>{prod.name}</p>
-                        <p><strong>${prod.price}</strong></p>
-                    </div>
-                </div>
-                ))
-                : 
+            :
                 filteredProducts.map(prod => (
-                <div className="container-products__item" key={prod.id}>
-                    <div className="container-image">
-                        <img  src={prod.images[0].img1} alt={prod.name}/>
-                        <div className="button__wrapper">BUY NOW</div>
-                    </div>
+                    <div className="container-products__item" key={prod.id}>
+                    <Link to={`/products/${prod.slug}`}>
+                        <div className="container-image">
+                            <img  src={prod.images[0].img1} alt={prod.name}/>
+                            <div className="button__wrapper">BUY NOW</div>
+                        </div>
+                    </Link>
 
                     <div className="container-products__details">
                         <p>{prod.name}</p>
@@ -59,26 +53,6 @@ export const Products = ({selected ,priceRange}) => {
             }
            
             {/* FILTERING PRICE RANGE SELECTED */}
-
-            {/* {
-
-                filtered.length === 0 && priceRange ?
-                prices.map(prod => (
-                    <div className="container-products__item" key={prod.id}>
-                        <div className="container-image">
-                            <img  src={prod.images[0].img1} alt={prod.name}/>
-                            <div className="button__wrapper">BUY NOW</div>
-                        </div>
-
-                        <div className="container-products__details">
-                            <p>{prod.name}</p>
-                            <p><strong>${prod.price}</strong></p>
-                        </div>
-                    </div>
-                ))
-                    : ''
-            } */}
-                
 
         </main>
     </div>
