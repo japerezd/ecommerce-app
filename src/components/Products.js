@@ -2,12 +2,13 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { getFilteredBrands } from "./filters/getBrands";
 import { getPriceRange } from "./filters/getPrices";
+import { products } from '../data/products';
 
-export const Products = ({products, selected ,priceRange}) => {
+export const Products = ({selected ,priceRange}) => {
 
-    const filtered = getFilteredBrands(products, selected);
-    const prices = getPriceRange(priceRange);
-
+    const {products,filteredProducts} = selected;
+    // const filtered = getFilteredBrands(products, selected);
+    // const prices = getPriceRange(priceRange);
     return (
     
     <div className="products">
@@ -24,9 +25,9 @@ export const Products = ({products, selected ,priceRange}) => {
             {/* FILTERING BRANDS SELECTED */}
            { 
 
-               filtered.length === 0 
+            filteredProducts.length === 0 
                 ?
-                prices.map(prod => (
+                products.map(prod => (
                 <div className="container-products__item" key={prod.id}>
                     <div className="container-image">
                         <img  src={prod.images[0].img1} alt={prod.name}/>
@@ -40,7 +41,7 @@ export const Products = ({products, selected ,priceRange}) => {
                 </div>
                 ))
                 : 
-               filtered.map(prod => (
+                filteredProducts.map(prod => (
                 <div className="container-products__item" key={prod.id}>
                     <div className="container-image">
                         <img  src={prod.images[0].img1} alt={prod.name}/>
@@ -85,16 +86,40 @@ export const Products = ({products, selected ,priceRange}) => {
 }
 
 Products.propTypes = {
-        products: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        brand: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        description: PropTypes.string.isRequired,
-        images: PropTypes.arrayOf(PropTypes.shape(
-            PropTypes.string.isRequired
-        )).isRequired,
-        slug: PropTypes.string.isRequired
-    })).isRequired,
-    selected: PropTypes.arrayOf(String).isRequired
+    //     products: PropTypes.arrayOf(PropTypes.shape({
+    //     id: PropTypes.string.isRequired,
+    //     brand: PropTypes.string.isRequired,
+    //     name: PropTypes.string.isRequired,
+    //     price: PropTypes.number.isRequired,
+    //     description: PropTypes.string.isRequired,
+    //     images: PropTypes.arrayOf(PropTypes.shape(
+    //         PropTypes.string.isRequired
+    //     )).isRequired,
+    //     slug: PropTypes.string.isRequired
+    // })).isRequired,
+    selected: PropTypes.shape({
+            products: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            brand: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            price: PropTypes.number.isRequired,
+            description: PropTypes.string.isRequired,
+            images: PropTypes.arrayOf(PropTypes.shape(
+                PropTypes.string.isRequired
+            )).isRequired,
+            slug: PropTypes.string.isRequired
+        })).isRequired,
+        
+        filteredProducts: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            brand: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            price: PropTypes.number.isRequired,
+            description: PropTypes.string.isRequired,
+            images: PropTypes.arrayOf(PropTypes.shape(
+                PropTypes.string.isRequired
+            )).isRequired,
+            slug: PropTypes.string.isRequired
+        }))
+    })
 }

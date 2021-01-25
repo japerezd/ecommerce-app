@@ -5,7 +5,7 @@ export const getBrandsByAlphabetic = () => {
 }
 
 export const getFilteredBrands = (products, selected) => {
-    return products.filter(prod => selected.includes(prod.brand))
+    return products.filter(prod => prod.brand === selected)
 }
 
 export const getBrandsInStock = (brand) => {

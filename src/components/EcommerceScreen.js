@@ -3,33 +3,50 @@ import * as React from 'react'
 import { Products } from './Products'
 import { SmartPhoneFilters } from './SmartPhoneFilters';
 import {products} from '../data/products'
+import { getFilteredBrands } from './filters/getBrands';
+import { getPriceRange } from './filters/getPrices';
 
-// const initialState = {
-//   products,
-//   filteredProducts: [],
-//   minPrice: 0,
-// }
+const initialState = {
+  products,
+  filteredProducts: [],
+  minPrice: 0,
+}
 
 export const EcommerceScreen = () => {
+  
 
-
-    const [selectedBrands, setSetSelectedBrands] = React.useState([]);
-    const [priceRange, setPriceRange] = React.useState();
-
+    const [selectedBrands, setSetSelectedBrands] = React.useState(initialState);
+    // const [priceRange, setPriceRange] = React.useState();
+    //TODO: get work for range price either with no selected brands or selected
     const handlePriceRange = (e)  => {
-      if(e.target.checked)
-        setPriceRange(e.target.id)
+      const prices = getPriceRange(e.target.id, selectedBrands.filteredProducts);
+      // console.log(prices)
+      if(e.target.checked){
+        setSetSelectedBrands((prevState) => ({
+          ...prevState,
+          filteredProducts: prices
+        }))
+      }
     }
 
     const handleBrandChange = (e) => {
+      const filtered = getFilteredBrands(products, e.target.id);
+
         if(e.target.checked){
-          setSetSelectedBrands((prevState) => {
-            return [...prevState, e.target.id]
-          })
+        // const filted = [...products.filteredProducts, filtered]
+
+          setSetSelectedBrands((prevState) => ({
+            // return [...prevState, e.target.id]
+            ...prevState,
+            filteredProducts: [...prevState.filteredProducts,...filtered]
+          }))
         }else{
-          const newState = selectedBrands.filter((brand) => brand !== e.target.id
+          const newState = selectedBrands.filteredProducts.filter((brand) => brand.brand !== e.target.id
           )
-          setSetSelectedBrands(newState)
+          setSetSelectedBrands((prevState) => ({
+            ...prevState,
+            filteredProducts: newState
+          }))
         }
         
     };
@@ -39,7 +56,7 @@ export const EcommerceScreen = () => {
 
             <SmartPhoneFilters handleBrandChange={handleBrandChange} handlePriceRange={handlePriceRange}/>
 
-            <Products products={products} selected={selectedBrands} priceRange={priceRange}/>
+            <Products selected={selectedBrands} />
         </div>
     )
 }
