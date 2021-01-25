@@ -20,6 +20,7 @@ export const SmartPhoneFilters = ({handleBrandChange, handlePriceRange}) => {
                 id={brand}
                 name={brand}
                 onChange={handleBrandChange}
+                className="brandCheckbox"
               />
               <label htmlFor={brand} className="brand">
                 {brand} ({getBrandsInStock(brand)})

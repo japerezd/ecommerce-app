@@ -101,3 +101,24 @@
 .container-products__details > p:nth-child(2){
     font-size: 1.2rem;
 }
+
+.container-products .empty-search{
+    width: 300px;
+//   grid-template-columns: repeat(1, auto-fit);
+  text-align: center;
+  text-transform: uppercase;
+  margin: 2rem 0;
+  padding: 1rem;
+
+  @media screen and (min-width: 768px){
+      width: 600px;
+  }
+
+  @media screen  and (min-width: 1024px){
+   
+    width: 700px;
+}
+@media screen  and (min-width: 1215px){
+    width: 920px;
+}
+}
