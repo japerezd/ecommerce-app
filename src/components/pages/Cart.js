@@ -1,5 +1,6 @@
 import React from "react";
 import image from "../../assets/images/smartphones/apple-iphone-12-mini-blanco-vista-frontal.webp";
+import {FaTrash} from 'react-icons/fa'
 
 export const Cart = () => {
   // const url = process.env.REACT_APP_URL;
@@ -22,12 +23,19 @@ export const Cart = () => {
           </p>
           <p><strong>$precio</strong></p>
 
-          <button>-</button>
-          <span>1</span>
-          <button>+</button>
-        </div>
+        <div className="control__products">
+              <div className="removing">
+                  <span> &minus; </span>
+              </div>
 
-        <button>Delete</button>
+              <span className="number__products">1</span>
+
+              <div className="adding">
+                  <span> &#43; </span>
+              </div>
+            </div>
+        </div>
+        <div><FaTrash className="delete"/></div>
       </div>
 
       <div className="cart__subtotals">

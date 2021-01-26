@@ -6,7 +6,6 @@ export const Products = ({selected ,handleLowerHigherPrice}) => {
 
     const {filteredProducts} = selected;
 
-
     return (
     
     <div className="products">
@@ -49,25 +48,12 @@ export const Products = ({selected ,handleLowerHigherPrice}) => {
             
             }
            
-            {/* FILTERING PRICE RANGE SELECTED */}
-
         </main>
     </div>
     )
 }
 
 Products.propTypes = {
-    //     products: PropTypes.arrayOf(PropTypes.shape({
-    //     id: PropTypes.string.isRequired,
-    //     brand: PropTypes.string.isRequired,
-    //     name: PropTypes.string.isRequired,
-    //     price: PropTypes.number.isRequired,
-    //     description: PropTypes.string.isRequired,
-    //     images: PropTypes.arrayOf(PropTypes.shape(
-    //         PropTypes.string.isRequired
-    //     )).isRequired,
-    //     slug: PropTypes.string.isRequired
-    // })).isRequired,
     selected: PropTypes.shape({
             products: PropTypes.arrayOf(PropTypes.shape({
             id: PropTypes.string.isRequired,

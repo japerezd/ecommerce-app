@@ -33,7 +33,4 @@ export const lowerHigherPrice = (option, filtered) => {
     }else if(option === 'lower'){
         return filtered.sort((first, second) => first.price - second.price)
     }
-    // return filtered.sort((a,b) => a.price - b.price);
-    // const filtered2 = filtered.map(prod => prod.price)
-    // return filtered2;
 }
