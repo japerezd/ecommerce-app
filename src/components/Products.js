@@ -1,8 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { getFilteredBrands } from "./filters/getBrands";
-import { getPriceRange } from "./filters/getPrices";
-import { products } from '../data/products';
 import { Link } from 'react-router-dom';
 
 export const Products = ({selected ,priceRange}) => {

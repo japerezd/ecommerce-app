@@ -13,38 +13,45 @@ const initialState = {
 }
 
 export const EcommerceScreen = () => {
-  
+  //TODO: check why is bugged when a radio button is selected and is not displaying correctly the products
 
     const [selectedBrands, setSetSelectedBrands] = React.useState(initialState);
     const inputsChecked = document.querySelectorAll('.brandCheckbox:checked').length;
     
     const handlePriceRange = (e)  => {
-      const prices = getPriceRange(e.target.id, selectedBrands.filteredProducts);
-      if(e.target.checked){
-        setSetSelectedBrands((prevState) => ({
-          ...prevState,
-          filteredProducts: prices
-        }))
+      
+        if(e.target.checked){
+          if(inputsChecked === 0)
+          {
+            const prices = getPriceRange(e.target.id, products);
+            setSetSelectedBrands((prevState) => ({
+              ...prevState,
+              filteredProducts: prices
+            }))
+          }else{
+            const prices = getPriceRange(e.target.id, selectedBrands.filteredProducts);
+
+            setSetSelectedBrands((prevState) => ({
+              ...prevState,
+              filteredProducts: prices
+            }))
+        }
       }
     }
 
     const handleBrandChange = (e) => {
       const filtered = getFilteredBrands(products, e.target.id);
-
       
         if(e.target.checked){
-        // const filted = [...products.filteredProducts, filtered]
 
           if(selectedBrands.filteredProducts.length === products.length){
             setSetSelectedBrands((prevState) => ({
-              // return [...prevState, e.target.id]
               ...prevState,
               filteredProducts: [...filtered]
             }))
           }else{
 
             setSetSelectedBrands((prevState) => ({
-              // return [...prevState, e.target.id]
               ...prevState,
               filteredProducts: [...prevState.filteredProducts,...filtered]
             }))
