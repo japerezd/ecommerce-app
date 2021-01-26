@@ -10,11 +10,11 @@ import { getPriceRange,lowerHigherPrice } from './filters/getPrices';
 const initialState = {
   products,
   filteredProducts: [],
-  minPrice: 0,
+  temporalProducts: []
 }
 
 export const EcommerceScreen = () => {
-  //TODO: check why is bugged when a radio button is selected and is not displaying correctly the products
+//TODO: 
 
     const [selectedBrands, setSetSelectedBrands] = React.useState(initialState);
     const inputsChecked = document.querySelectorAll('.brandCheckbox:checked').length;
@@ -31,13 +31,13 @@ export const EcommerceScreen = () => {
             }))
           }else{
             if(selectedBrands.filteredProducts.length === 0){
-              const prices = getPriceRange(e.target.id, selectedBrands.products);
+              const prices = getPriceRange(e.target.id, selectedBrands.temporalProducts);
               setSetSelectedBrands((prevState) => ({
                 ...prevState,
                 filteredProducts: prices
               }))
             }else{
-              const prices = getPriceRange(e.target.id, selectedBrands.filteredProducts);
+              const prices = getPriceRange(e.target.id, selectedBrands.temporalProducts);
   
               setSetSelectedBrands((prevState) => ({
                 ...prevState,
@@ -56,21 +56,25 @@ export const EcommerceScreen = () => {
           if(selectedBrands.filteredProducts.length === products.length){
             setSetSelectedBrands((prevState) => ({
               ...prevState,
-              filteredProducts: [...filtered]
+              filteredProducts: [...filtered],
+              temporalProducts: [...filtered]
             }))
           }else{
 
             setSetSelectedBrands((prevState) => ({
               ...prevState,
-              filteredProducts: [...prevState.filteredProducts,...filtered]
+              filteredProducts: [...prevState.temporalProducts,...filtered],
+              temporalProducts: [...prevState.temporalProducts, ...filtered]
             }))
           }
         }else{
-          const newState = selectedBrands.filteredProducts.filter((brand) => brand.brand !== e.target.id
+          // DELETE BRANDS UNSELECTED FROM STATE
+          const newState = selectedBrands.temporalProducts.filter((brand) => brand.brand !== e.target.id
           )
           setSetSelectedBrands((prevState) => ({
             ...prevState,
-            filteredProducts: newState
+            filteredProducts: newState,
+            temporalProducts: newState
           }))
         }
         
