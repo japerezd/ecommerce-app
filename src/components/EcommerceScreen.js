@@ -14,7 +14,7 @@ const initialState = {
 }
 
 export const EcommerceScreen = () => {
-//TODO: 
+//TODO: CORRECT RENDERING MUST BE DONE WHEN CHANGING FILTERS. 
 
     const [selectedBrands, setSetSelectedBrands] = React.useState(initialState);
     const inputsChecked = document.querySelectorAll('.brandCheckbox:checked').length;

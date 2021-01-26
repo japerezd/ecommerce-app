@@ -17,6 +17,7 @@
 }
 
 .device-preview__minipreviews{
+    
     display: flex;
     justify-content: space-evenly;
     align-self: center;
@@ -24,10 +25,21 @@
 }
 
 .device-preview__minipreviews > * {
+    opacity: .5;
     border: 1px solid $gray;
     cursor: pointer;
     width: 80px;
+    transition: 0.3s linear;
+
+    &:hover{
+        opacity: 1;
+    }
 }   
+
+.active{
+    opacity: 1;
+}
+
 
 // INFO DEVICE
 .product-info{
