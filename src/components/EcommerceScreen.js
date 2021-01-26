@@ -4,7 +4,8 @@ import { Products } from './Products'
 import { SmartPhoneFilters } from './SmartPhoneFilters';
 import {products} from '../data/products'
 import { getFilteredBrands } from './filters/getBrands';
-import { getPriceRange } from './filters/getPrices';
+import { getPriceRange,lowerHigherPrice } from './filters/getPrices';
+
 
 const initialState = {
   products,
@@ -29,12 +30,20 @@ export const EcommerceScreen = () => {
               filteredProducts: prices
             }))
           }else{
-            const prices = getPriceRange(e.target.id, selectedBrands.filteredProducts);
-
-            setSetSelectedBrands((prevState) => ({
-              ...prevState,
-              filteredProducts: prices
-            }))
+            if(selectedBrands.filteredProducts.length === 0){
+              const prices = getPriceRange(e.target.id, selectedBrands.products);
+              setSetSelectedBrands((prevState) => ({
+                ...prevState,
+                filteredProducts: prices
+              }))
+            }else{
+              const prices = getPriceRange(e.target.id, selectedBrands.filteredProducts);
+  
+              setSetSelectedBrands((prevState) => ({
+                ...prevState,
+                filteredProducts: prices
+              }))
+            }
         }
       }
     }
@@ -67,6 +76,23 @@ export const EcommerceScreen = () => {
         
     };
 
+    const handleLowerHigherPrice = (e) => {
+      const option = e.target.value;
+      if(inputsChecked === 0){
+        const filtered = lowerHigherPrice(option, selectedBrands.products)
+        setSetSelectedBrands((selectedBrands) => ({
+          ...selectedBrands,
+          filteredProducts: filtered
+        }))
+      }else{
+        const filtered = lowerHigherPrice(option, selectedBrands.filteredProducts);
+        setSetSelectedBrands((selectedBrands) => ({
+          ...selectedBrands,
+          filteredProducts: filtered
+        }))
+      } 
+  }
+
     React.useEffect(() => {
       if(inputsChecked === 0)
         setSetSelectedBrands(selectedBrands => ({
@@ -81,7 +107,7 @@ export const EcommerceScreen = () => {
 
             <SmartPhoneFilters handleBrandChange={handleBrandChange} handlePriceRange={handlePriceRange}/>
 
-            <Products selected={selectedBrands} />
+            <Products selected={selectedBrands} handleLowerHigherPrice = {handleLowerHigherPrice} />
         </div>
     )
 }

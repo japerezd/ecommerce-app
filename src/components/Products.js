@@ -2,19 +2,19 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-export const Products = ({selected ,priceRange}) => {
+export const Products = ({selected ,handleLowerHigherPrice}) => {
 
-    const {products,filteredProducts} = selected;
-    // const filtered = getFilteredBrands(products, selected);
-    // const prices = getPriceRange(priceRange);
+    const {filteredProducts} = selected;
+
+
     return (
     
     <div className="products">
         <div className="container-products__filter-price">
-                <select defaultValue={'DEFAULT'}>
+                <select defaultValue={'DEFAULT'} onChange={handleLowerHigherPrice}>
                     <option value="DEFAULT" disabled>ORDER BY</option>
-                    <option>HIGHER PRICE</option>
-                    <option>LOWER PRICE</option>
+                    <option value="higher">HIGHER PRICE</option>
+                    <option value="lower">LOWER PRICE</option>
                 </select>
             </div>
 

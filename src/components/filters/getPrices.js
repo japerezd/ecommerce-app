@@ -4,7 +4,7 @@ import {products} from '../../data/products'
 export const getPriceRange = (initialPrice, selected) => {
     if(selected.length === 0){
         return products.filter(prod =>{
-            if(initialPrice === '3000' )
+            if(initialPrice === '3000')
                 return prod.price >= initialPrice && prod.price <= 6999
             if(initialPrice === '7000')
                 return prod.price >= initialPrice && prod.price <=10999
@@ -25,4 +25,15 @@ export const getPriceRange = (initialPrice, selected) => {
        
         return prod.price >= 0
     })
+}
+
+export const lowerHigherPrice = (option, filtered) => {
+    if(option === 'higher'){
+         return filtered.sort((first, second) => second.price - first.price)
+    }else if(option === 'lower'){
+        return filtered.sort((first, second) => first.price - second.price)
+    }
+    // return filtered.sort((a,b) => a.price - b.price);
+    // const filtered2 = filtered.map(prod => prod.price)
+    // return filtered2;
 }
