@@ -1,56 +1,86 @@
 import React from "react";
-import image from "../../assets/images/smartphones/apple-iphone-12-mini-blanco-vista-frontal.webp";
 import {FaTrash} from 'react-icons/fa'
+import { ProductContext } from "../../ProductContext";
 
 export const Cart = () => {
   // const url = process.env.REACT_APP_URL;
+  const {items, handleItems} = React.useContext(ProductContext)
+  // const [addRemoveItems, dispatch] = React.useReducer(cartReducer)
+  
+  // const handleItems = (e) => {
+  //   // console.log(e.currentTarget)
+  //   if(e.target.id === 'minus' || e.target.className === 'removing'){
+
+  //     console.log('Removing')
+  //   }
+  //   else if (e.target.id === 'plus' || e.target.className === 'adding'){
+
+  //     console.log('Adding')
+  //     dispatch(addItem())
+  //   }
+  // }
 
   return (
     <div className="container-cart">
-      <div className="container-cart__item">
-        <div className="container-cart__image">
-          <img src={image} alt="apple-iphone" />
-        </div>
+      {
 
-        <div className="container-cart__details">
-          <h2>Iphone bla bla bla</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-            dignissim porttitor lacinia. Suspendisse rhoncus mollis sagittis.
-            Mauris nec eros arcu. Duis a euismod erat. Vivamus dictum facilisis
-            fermentum. In non aliquam quam. Aliquam erat mi, consectetur in
-            imperdiet quis, ornare a felis.
-          </p>
-          <p><strong>$precio</strong></p>
+        items?.products 
+        ?
+        items.products.map((prod) => (
+          <div className="container-cart__item" key={prod.product.id}>
+            <div className="container-cart__image">
+              <img src={prod.product.images[0].img1} alt={prod.product.name} />
+            </div>
 
-        <div className="control__products">
-              <div className="removing">
-                  <span> &minus; </span>
-              </div>
+            <div className="container-cart__details">
+              <h2>{prod.product.name}</h2>
+              <p> {prod.product.description} </p>
+              <p><strong>${prod.product.price}</strong></p>
 
-              <span className="number__products">1</span>
+            <div className="control__products" onClick={handleItems}>
+                  <div className="removing">
+                      <span id="minus"> &minus; </span>
+                  </div>
 
-              <div className="adding">
-                  <span> &#43; </span>
+                  <span className="number__products">{prod.amount}</span>
+
+                  <div className="adding">
+                      <span id="plus"> &#43; </span>
+                  </div>
               </div>
             </div>
+
+            <div><FaTrash className="delete"/></div>
+
+          </div>
+        )) 
+        
+        :
+
+          <div className="empty-search">
+                  <h3> There is no items in the cart. </h3>
+          </div>
+      }
+
+      {
+        items?.products && 
+        <div className="cart__subtotals">
+
+          <span className="cart__total-products">
+            {items.products.length} Products
+          </span>
+          
+          <p className="cart__value">
+            Subtotal
+            <strong>$10,500</strong>
+          </p>
+
+          <div className="button__wrapper">
+              Buy
+          </div>
+
         </div>
-        <div><FaTrash className="delete"/></div>
-      </div>
-
-      <div className="cart__subtotals">
-
-        <span className="cart__total-products">1 Products</span>
-        <p className="cart__value">
-          Subtotal
-          <strong>$10,500</strong>
-        </p>
-
-        <div className="button__wrapper">
-            Buy
-        </div>
-
-      </div>
+      }
 
       
 

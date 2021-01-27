@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { getDeviceBySlug } from '../../selectors/getDeviceBySlug';
 
 
@@ -7,7 +8,6 @@ export const SingleProduct = ({match}) => {
     const {price,images, description, battery, display, cpu, camera, name} = getDeviceBySlug(idPhone);
 
     const [imagePreview, setImagePreview] = React.useState({
-        // class: 'active',
         preview: images[0].img1 
     });
 
@@ -76,9 +76,12 @@ export const SingleProduct = ({match}) => {
                 <p> <strong>Camera</strong> </p>
                 <span> {camera} </span>
 
-                <div className="cart-button__wrapper">
-                 Add to cart
-                </div>
+                <Link to="/cart">
+                    <div className="cart-button__wrapper">
+                    Add to cart
+                    </div>
+                </Link>
+
             </div>
 
             

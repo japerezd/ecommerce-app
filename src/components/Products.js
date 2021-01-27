@@ -1,14 +1,27 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+// import { singleProductReducer } from '../reducers/singleProductReducer';
+// import { getDeviceByName } from '../selectors/getDeviceByName';
+// import { buySingleProduct } from '../actions/singleProduct';
+import { ProductContext } from '../ProductContext';
 
 export const Products = ({selected ,handleLowerHigherPrice}) => {
-
+// TODO: hacer que funcione el context api y que se pueda tomar datos en Cart.js
     const {filteredProducts} = selected;
+    const {handleBuy} = React.useContext(ProductContext)
+    // const [items, dispatch] = React.useReducer(singleProductReducer)
+
+    // const handleBuy = (e) => {
+    //     const nameImage = e.currentTarget.parentNode.querySelector('img').alt;
+    //     const product = getDeviceByName(nameImage);
+    //     // dispatching action
+    //     dispatch(buySingleProduct(product))
+    // }
 
     return (
-    
-    <div className="products">
+    // <ProductContext.Provider value={items}>
+        <div className="products">
         <div className="container-products__filter-price">
                 <select defaultValue={'DEFAULT'} onChange={handleLowerHigherPrice}>
                     <option value="DEFAULT" disabled>ORDER BY</option>
@@ -31,12 +44,19 @@ export const Products = ({selected ,handleLowerHigherPrice}) => {
             :
                 filteredProducts.map(prod => (
                     <div className="container-products__item" key={prod.id}>
-                    <Link to={`/products/${prod.slug}`}>
                         <div className="container-image">
-                            <img  src={prod.images[0].img1} alt={prod.name}/>
-                            <div className="button__wrapper">BUY NOW</div>
+                            <Link to={`/products/${prod.slug}`}>
+                                <img  src={prod.images[0].img1} alt={prod.name}/>
+                            </Link>
+                         {/* <Link to="/cart">    */}
+                            <div 
+                            className="button__wrapper"
+                            onClick={handleBuy}
+                            >
+                                BUY NOW
+                            </div>
+                         {/* </Link>   */}
                         </div>
-                    </Link>
 
                     <div className="container-products__details">
                         <p>{prod.name}</p>
@@ -50,6 +70,7 @@ export const Products = ({selected ,handleLowerHigherPrice}) => {
            
         </main>
     </div>
+    // </ProductContext.Provider>
     )
 }
 
