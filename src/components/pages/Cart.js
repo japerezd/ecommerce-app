@@ -5,20 +5,14 @@ import { ProductContext } from "../../ProductContext";
 export const Cart = () => {
   // const url = process.env.REACT_APP_URL;
   const {items, handleItems} = React.useContext(ProductContext)
-  // const [addRemoveItems, dispatch] = React.useReducer(cartReducer)
-  
-  // const handleItems = (e) => {
-  //   // console.log(e.currentTarget)
-  //   if(e.target.id === 'minus' || e.target.className === 'removing'){
 
-  //     console.log('Removing')
-  //   }
-  //   else if (e.target.id === 'plus' || e.target.className === 'adding'){
+  const totalProducts = () => {
+    return items?.products.reduce((total, prod) => total += prod.amount, 0)
+  }
 
-  //     console.log('Adding')
-  //     dispatch(addItem())
-  //   }
-  // }
+  const subtotal = () => {
+    return items?.products.reduce((total, prod) => total += prod.itemPrice,0)
+  }
 
   return (
     <div className="container-cart">
@@ -35,19 +29,25 @@ export const Cart = () => {
             <div className="container-cart__details">
               <h2>{prod.product.name}</h2>
               <p> {prod.product.description} </p>
-              <p><strong>${prod.product.price}</strong></p>
+              <p>
+                <strong>
+                  ${prod.itemPrice}
+                </strong>
+              </p>
 
             <div className="control__products" onClick={handleItems}>
                   <div className="removing">
                       <span id="minus"> &minus; </span>
                   </div>
 
-                  <span className="number__products">{prod.amount}</span>
+                  <span className="number__products">
+                    {prod.amount}
+                  </span>
 
                   <div className="adding">
                       <span id="plus"> &#43; </span>
                   </div>
-              </div>
+             </div>
             </div>
 
             <div><FaTrash className="delete"/></div>
@@ -67,12 +67,12 @@ export const Cart = () => {
         <div className="cart__subtotals">
 
           <span className="cart__total-products">
-            {items.products.length} Products
+            {totalProducts()} Products
           </span>
           
           <p className="cart__value">
             Subtotal
-            <strong>$10,500</strong>
+            <strong>${subtotal()}</strong>
           </p>
 
           <div className="button__wrapper">

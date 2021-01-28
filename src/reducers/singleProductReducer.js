@@ -19,15 +19,20 @@ export const singleProductReducer = (state = initialState, action) => {
             
         case types.add: 
 
-          state.products[indexProduct].amount++;
+            state.products[indexProduct].amount++;
+            state.products[indexProduct].itemPrice = state.products[indexProduct].product.price * state.products[indexProduct].amount;
             return {
-                products: [...state.products]
+                products: [...state.products],
             }
 
         case types.subtract:
 
-            if(state.products[indexProduct].amount === 1)
-               return { products: [...state.products]}
+            state.products[indexProduct].itemPrice = state.products[indexProduct].product.price * (state.products[indexProduct].amount - 1);
+
+            if(state.products[indexProduct].amount === 1){
+                state.products[indexProduct].itemPrice = state.products[indexProduct].product.price
+                return { products: [...state.products]}
+            }
                  
             state.products[indexProduct].amount--;
 

@@ -6,7 +6,8 @@ import { AppRouter } from './routers/AppRouter'
 import { getDeviceByName } from './selectors/getDeviceByName'
 
 export const EcommerceApp = () => {
-    const [items, dispatch] = React.useReducer(singleProductReducer)
+  const [items, dispatch] = React.useReducer(singleProductReducer)
+
   
   const handleItems = (e) => {
     const nameProduct = e.target.closest('.container-cart__details').querySelector('h2').innerHTML;
@@ -14,12 +15,13 @@ export const EcommerceApp = () => {
     const product = getDeviceByName(nameProduct);
 
     if(e.target.id === 'minus' || e.target.className === 'removing'){
-        dispatch(subtractItem(product))
+        dispatch(subtractItem(product, product.price))
     }
     else if (e.target.id === 'plus' || e.target.className === 'adding'){
 
-      dispatch(addItem(product))
+      dispatch(addItem(product,product.price))
     }
+
   }
 
     const handleBuy = (e) => {

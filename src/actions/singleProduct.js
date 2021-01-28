@@ -4,7 +4,8 @@ export const buySingleProduct = (product) => ({
     type: types.buySingleProduct,
     payload: {
         product,
-        amount: 1
+        amount: 1,
+        itemPrice: product.price
     }
 })
 
