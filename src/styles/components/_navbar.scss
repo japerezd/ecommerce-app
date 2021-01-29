@@ -16,3 +16,18 @@ a{
         color: $hover-color;
     }
 }
+
+.totalItems{
+    position: relative;
+    width: 2rem;
+    display: flex;
+    
+    span{
+        position: absolute;
+        right: 0;
+        top: -0.5rem;
+        color: orange;
+        font-weight: bold;
+        font-size: 1rem;
+    }
+}

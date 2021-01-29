@@ -4,7 +4,7 @@ import { ProductContext } from "../../ProductContext";
 
 export const Cart = () => {
   // const url = process.env.REACT_APP_URL;
-  const {items, handleItems} = React.useContext(ProductContext)
+  const {items, handleItems, handleDelete, buyItems} = React.useContext(ProductContext)
 
   const totalProducts = () => {
     return items?.products.reduce((total, prod) => total += prod.amount, 0)
@@ -18,7 +18,7 @@ export const Cart = () => {
     <div className="container-cart">
       {
 
-        items?.products 
+        items?.products.length > 0 
         ?
         items.products.map((prod) => (
           <div className="container-cart__item" key={prod.product.id}>
@@ -50,20 +50,24 @@ export const Cart = () => {
              </div>
             </div>
 
-            <div><FaTrash className="delete"/></div>
+            <div onClick={handleDelete}>
+              <FaTrash className="delete"/>
+            </div>
 
           </div>
         )) 
         
         :
-
-          <div className="empty-search">
-                  <h3> There is no items in the cart. </h3>
-          </div>
+            
+            <div className="empty-search">
+                    <h3> There is no items in the cart. </h3>
+            </div>
+        
+            
       }
 
       {
-        items?.products && 
+        items?.products.length > 0 &&
         <div className="cart__subtotals">
 
           <span className="cart__total-products">
@@ -75,14 +79,14 @@ export const Cart = () => {
             <strong>${subtotal()}</strong>
           </p>
 
-          <div className="button__wrapper">
+          <div className="button__wrapper" onClick={buyItems}>
               Buy
           </div>
 
         </div>
-      }
 
-      
+       
+      }
 
     </div>
   );

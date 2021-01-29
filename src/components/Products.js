@@ -1,15 +1,11 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-// import { singleProductReducer } from '../reducers/singleProductReducer';
-// import { getDeviceByName } from '../selectors/getDeviceByName';
-// import { buySingleProduct } from '../actions/singleProduct';
 import { ProductContext } from '../ProductContext';
 
 export const Products = ({selected ,handleLowerHigherPrice}) => {
-// TODO: hacer que funcione el context api y que se pueda tomar datos en Cart.js
     const {filteredProducts} = selected;
-    const {handleBuy} = React.useContext(ProductContext)
+    const {handleAddToCart} = React.useContext(ProductContext)
 
     return (
         <div className="products">
@@ -39,14 +35,12 @@ export const Products = ({selected ,handleLowerHigherPrice}) => {
                             <Link to={`/products/${prod.slug}`}>
                                 <img  src={prod.images[0].img1} alt={prod.name}/>
                             </Link>
-                         {/* <Link to="/cart">    */}
-                            <div 
-                            className="button__wrapper"
-                            onClick={handleBuy}
-                            >
-                                BUY NOW
-                            </div>
-                         {/* </Link>   */}
+                                <div 
+                                className="button__wrapper"
+                                onClick={handleAddToCart}
+                                >
+                                    ADD TO CART
+                                </div>
                         </div>
 
                     <div className="container-products__details">

@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { ProductContext } from '../../ProductContext';
 import { getDeviceBySlug } from '../../selectors/getDeviceBySlug';
 
 
 export const SingleProduct = ({match}) => {
+    const {handleAddToCartSingleProduct} = React.useContext(ProductContext)
+
     const idPhone = match.params.idPhone;
     const {price,images, description, battery, display, cpu, camera, name} = getDeviceBySlug(idPhone);
 
@@ -76,11 +78,11 @@ export const SingleProduct = ({match}) => {
                 <p> <strong>Camera</strong> </p>
                 <span> {camera} </span>
 
-                <Link to="/cart">
-                    <div className="cart-button__wrapper">
-                    Add to cart
+                
+                    <div className="cart-button__wrapper" onClick={handleAddToCartSingleProduct}>
+                        Add to cart
                     </div>
-                </Link>
+                
 
             </div>
 
