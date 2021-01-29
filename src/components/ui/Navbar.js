@@ -7,7 +7,7 @@ export const Navbar = () => {
     const {items} = React.useContext(ProductContext)
     return (
         <nav className="navbar">
-            <Link to="/">
+            <Link to="/ecommerce-app">
                 E-commerce App
             </Link>
 
