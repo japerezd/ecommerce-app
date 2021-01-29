@@ -2,8 +2,7 @@ import React from 'react'
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Redirect
+    Route
   } from "react-router-dom";
 import { Cart } from '../components/pages/Cart';
 import { EcommerceScreen } from '../components/EcommerceScreen';
@@ -21,9 +20,7 @@ export const AppRouter = () => {
           <Route exact path="/products/:idPhone" component={SingleProduct}/>
           <Route exact path="/cart" component={Cart}/>
 
-          <Route exact path="/ecommerce-app" component = {EcommerceScreen} />
-
-          <Redirect to="/ecommerce-app"/>
+          <Route exact path="/" component = {EcommerceScreen} />
         </Switch>
 
     </Router>
