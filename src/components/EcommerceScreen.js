@@ -1,116 +1,100 @@
-import * as React from 'react'
-import { Products } from './Products'
+import * as React from 'react';
+import { Products } from './Products';
 import { SmartPhoneFilters } from './SmartPhoneFilters';
-import {products} from '../data/products'
+import { products } from '../data/products';
 import { getFilteredBrands } from './filters/getBrands';
-import { getPriceRange,lowerHigherPrice } from './filters/getPrices';
-
+import { getPriceRange, lowerHigherPrice } from './filters/getPrices';
 
 const initialState = {
   products,
   filteredProducts: [],
-  temporalProducts: []
-}
+  temporalProducts: [],
+};
 
 export const EcommerceScreen = () => {
-//TODO: CORRECT RENDERING MUST BE DONE WHEN CHANGING FILTERS. 
+// TODO: make an error page
+  const [selectedBrands, setSetSelectedBrands] = React.useState(initialState);
+  const inputsChecked = document.querySelectorAll('.brandCheckbox:checked')
+    .length;
 
-    const [selectedBrands, setSetSelectedBrands] = React.useState(initialState);
-    const inputsChecked = document.querySelectorAll('.brandCheckbox:checked').length;
+  const handlePriceRange = (e) => {
+
+    setSetSelectedBrands({
+      ...selectedBrands,
+      price: e.target.id
+    });
+
+  };
+
+  const handleBrandChange = (e) => {
+    const filtered = getFilteredBrands(e.target.id);
+    if (e.target.checked) {
+      // Adding more brands to the array
+        setSetSelectedBrands((prevState) => ({
+          ...prevState,
+          filteredProducts: [...prevState.temporalProducts, ...filtered],
+          temporalProducts: [...prevState.temporalProducts, ...filtered],
+        }));
+    } else {
+      // Deleting those which are unselected
+      const newFiltered = selectedBrands.filteredProducts.filter(
+        (prod) => prod.brand !== e.target.id
+      );
+      setSetSelectedBrands((prevState) => ({
+        ...prevState,
+        filteredProducts: newFiltered,
+        temporalProducts: newFiltered,
+      }));
+    }
+  };
+
+  const handleLowerHigherPrice = (e) => {
+    const option = e.target.value;
+    console.log(option)
+    setSetSelectedBrands({
+      ...selectedBrands,
+      orderBy: option
+    })
+ 
+  };
+
+  const filterProducts = () => {
+    let { filteredProducts, orderBy,price } = selectedBrands;
+    let tempPhones = [...filteredProducts];
+
+    if(price){
+      const prices = getPriceRange(price, filteredProducts);
+      tempPhones = prices
+    }
     
-    const handlePriceRange = (e)  => {
-      
-        if(e.target.checked){
-          if(inputsChecked === 0)
-          {
-            const prices = getPriceRange(e.target.id, products);
-            setSetSelectedBrands((prevState) => ({
-              ...prevState,
-              filteredProducts: prices
-            }))
-          }else{
-            if(selectedBrands.filteredProducts.length === 0){
-              const prices = getPriceRange(e.target.id, selectedBrands.temporalProducts);
-              setSetSelectedBrands((prevState) => ({
-                ...prevState,
-                filteredProducts: prices
-              }))
-            }else{
-              const prices = getPriceRange(e.target.id, selectedBrands.temporalProducts);
-  
-              setSetSelectedBrands((prevState) => ({
-                ...prevState,
-                filteredProducts: prices
-              }))
-            }
-        }
-      }
+    if(orderBy){
+      tempPhones = lowerHigherPrice(orderBy, tempPhones)
     }
 
-    const handleBrandChange = (e) => {
-      const filtered = getFilteredBrands(products, e.target.id);
-      
-        if(e.target.checked){
+    return tempPhones;
+  };
 
-          if(selectedBrands.filteredProducts.length === products.length){
-            setSetSelectedBrands((prevState) => ({
-              ...prevState,
-              filteredProducts: [...filtered],
-              temporalProducts: [...filtered]
-            }))
-          }else{
+  const sortedProds = filterProducts();
 
-            setSetSelectedBrands((prevState) => ({
-              ...prevState,
-              filteredProducts: [...prevState.temporalProducts,...filtered],
-              temporalProducts: [...prevState.temporalProducts, ...filtered]
-            }))
-          }
-        }else{
-          // DELETE BRANDS UNSELECTED FROM STATE
-          const newState = selectedBrands.temporalProducts.filter((brand) => brand.brand !== e.target.id
-          )
-          setSetSelectedBrands((prevState) => ({
-            ...prevState,
-            filteredProducts: newState,
-            temporalProducts: newState
-          }))
-        }
-        
-    };
+  React.useEffect(() => {
+    if (inputsChecked === 0)
+      setSetSelectedBrands((selectedBrands) => ({
+        ...selectedBrands,
+        filteredProducts: products,
+      }));
+  }, [inputsChecked]);
 
-    const handleLowerHigherPrice = (e) => {
-      const option = e.target.value;
-      if(inputsChecked === 0){
-        const filtered = lowerHigherPrice(option, selectedBrands.products)
-        setSetSelectedBrands((selectedBrands) => ({
-          ...selectedBrands,
-          filteredProducts: filtered
-        }))
-      }else{
-        const filtered = lowerHigherPrice(option, selectedBrands.filteredProducts);
-        setSetSelectedBrands((selectedBrands) => ({
-          ...selectedBrands,
-          filteredProducts: filtered
-        }))
-      } 
-  }
+  return (
+    <div className='container'>
+      <SmartPhoneFilters
+        handleBrandChange={handleBrandChange}
+        handlePriceRange={handlePriceRange}
+      />
 
-    React.useEffect(() => {
-      if(inputsChecked === 0)
-        setSetSelectedBrands(selectedBrands => ({
-          ...selectedBrands,
-          filteredProducts: products
-        }))
-
-    },[inputsChecked])
-   
-    return (
-        <div className="container">
-
-            <SmartPhoneFilters handleBrandChange={handleBrandChange} handlePriceRange={handlePriceRange}/>
-
-            <Products selected={selectedBrands} handleLowerHigherPrice = {handleLowerHigherPrice} />
-        </div>
-    )
-}
+      <Products
+        selected={sortedProds}
+        handleLowerHigherPrice={handleLowerHigherPrice}
+      />
+    </div>
+  );
+};

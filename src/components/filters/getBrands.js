@@ -4,7 +4,7 @@ export const getBrandsByAlphabetic = () => {
     return brands.sort();
 }
 
-export const getFilteredBrands = (products, selected) => {
+export const getFilteredBrands = (selected) => {
     return products.filter(prod => prod.brand === selected)
 }
 

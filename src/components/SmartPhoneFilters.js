@@ -40,6 +40,7 @@ export const SmartPhoneFilters = ({handleBrandChange, handlePriceRange}) => {
               id="3000"
               name="price"
               onChange={handlePriceRange}
+              // checked={p3000}
             />
             <label htmlFor="3000">From $3000 to $6999</label>
           </div>
@@ -50,6 +51,7 @@ export const SmartPhoneFilters = ({handleBrandChange, handlePriceRange}) => {
               id="7000"
               name="price"
               onChange={handlePriceRange}
+              // checked={p7000}
             />
             <label htmlFor="7000">From $7000 to $10999</label>
           </div>
