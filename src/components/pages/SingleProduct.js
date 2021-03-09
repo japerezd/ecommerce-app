@@ -1,18 +1,20 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { ProductContext } from '../../ProductContext';
 import { getDeviceBySlug } from '../../selectors/getDeviceBySlug';
 
 
 export const SingleProduct = ({match}) => {
     const {handleAddToCartSingleProduct} = React.useContext(ProductContext)
+    
+    const smartphone = getDeviceBySlug(match.params.idPhone);
 
-    const idPhone = match.params.idPhone;
-    const {price,images, description, battery, display, cpu, camera, name} = getDeviceBySlug(idPhone);
-
+    const {price,images, description, battery, display, cpu, camera, name} = smartphone;
+    
     const [imagePreview, setImagePreview] = React.useState({
-        preview: images[0].img1 
+        preview: images ? images[0].img1 : ''
     });
-
+    
     const miniImages = document.querySelectorAll('.device-preview__minipreviews div');
 
     const handleImage = (e) => {
@@ -25,12 +27,22 @@ export const SingleProduct = ({match}) => {
     }
 
     React.useEffect(()=>{
-        setImagePreview({
-            class:'active',
-            preview: images[0].img1
-        })
+            setImagePreview({
+                class:'active',
+                preview: images ? images[0].img1 : ''
+            })
     },[images])
 
+    if(price === ''){
+        return (
+            <div className="error">
+                <h2>NO SUCH SMARTPHONE COULD BE FOUND </h2>
+                <Link className="button__wrapper" to="/">
+                    Back to Home
+                </Link>
+            </div>
+        )
+    }
 
     return (
         <div className="product-details">

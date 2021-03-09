@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ProductContext } from '../ProductContext';
 
 export const Products = ({selected ,handleLowerHigherPrice}) => {
-    const {filteredProducts} = selected;
+    const sortedProds = selected;
     const {handleAddToCart} = React.useContext(ProductContext)
 
     return (
@@ -22,14 +22,14 @@ export const Products = ({selected ,handleLowerHigherPrice}) => {
             {/* FILTERING BRANDS SELECTED */}
            { 
 
-            filteredProducts.length === 0 
+            sortedProds.length === 0 
             ?
              <div className="empty-search">
                 <h3>Unfortunately no devices matched your search parameters :( </h3>
              </div>
 
             :
-                filteredProducts.map(prod => (
+                sortedProds.map(prod => (
                     <div className="container-products__item" key={prod.id}>
                         <div className="container-image">
                             <Link to={`/products/${prod.slug}`}>
@@ -59,7 +59,7 @@ export const Products = ({selected ,handleLowerHigherPrice}) => {
 }
 
 Products.propTypes = {
-    selected: PropTypes.shape({
+    sortedProds: PropTypes.shape({
             products: PropTypes.arrayOf(PropTypes.shape({
             id: PropTypes.string.isRequired,
             brand: PropTypes.string.isRequired,

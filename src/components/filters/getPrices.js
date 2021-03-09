@@ -1,8 +1,8 @@
 import {products} from '../../data/products'
 
 
-export const getPriceRange = (initialPrice, selected) => {
-    if(selected.length === 0){
+export const getPriceRange = (initialPrice, selectedProd) => {
+    if(selectedProd.length === 0){
         return products.filter(prod =>{
             if(initialPrice === '3000')
                 return prod.price >= initialPrice && prod.price <= 6999
@@ -15,7 +15,7 @@ export const getPriceRange = (initialPrice, selected) => {
         })
     }
 
-    return selected.filter(prod =>{
+    return selectedProd.filter(prod =>{
         if(initialPrice === '3000' )
             return prod.price >= initialPrice && prod.price <= 6999
         if(initialPrice === '7000')
