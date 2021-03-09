@@ -5,7 +5,6 @@ import { ProductContext } from '../ProductContext';
 
 export const Products = ({selected ,handleLowerHigherPrice}) => {
     const sortedProds = selected;
-    console.log(sortedProds)
     const {handleAddToCart} = React.useContext(ProductContext)
 
     return (
